@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="CRYPTOLAB - Web-Based Text Encryption and Cryptographic Workbench"
+    >
+
+    <title>CRYPTOLAB | Cryptographic Workbench</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+    <!-- =========================
+         TOP BAR
+    ========================== -->
+
+    <header class="topbar container">
+
+        <div class="brand-mini">
+
+            <span class="dot"></span>
+
+            <span>CRYPTOLAB</span>
+
+        </div>
+
+
+        <div class="top-actions">
+
+            <div class="system-status">
+
+                <span class="dot"></span>
+
+                SYSTEM READY
+
+            </div>
+
+
+            <button
+                id="authBtn"
+                class="top-btn"
+                type="button"
+            >
+                Login
+            </button>
+
+
+            <div
+                id="userPanel"
+                class="user-panel hidden"
+            >
+
+                <span id="userName">
+                    User
+                </span>
+
+                <button
+                    id="logoutBtn"
+                    type="button"
+                >
+                    Logout
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main class="container">
+
+
+        <!-- =====================
+             HERO
+        ====================== -->
+
+        <section class="hero">
+
+            <span class="badge">
+                INFORMATION SECURITY
+            </span>
+
+
+            <h1>
+                Cryptographic Workbench
+            </h1>
+
+
+            <p>
+                Encrypt, decrypt, encode and hash text
+                using multiple cryptographic techniques.
+            </p>
+
+        </section>
+
+
+
+        <!-- =====================
+             WORKBENCH
+        ====================== -->
+
+        <section class="workbench">
+
+
+            <!-- =================
+                 INPUT / OUTPUT
+            ================== -->
+
+            <div class="workspace-grid">
+
+
+                <!-- INPUT -->
+
+                <section class="panel">
+
+                    <div class="panel-head">
+
+                        <div class="panel-title-wrap">
+
+                            <span class="number">
+                                01
+                            </span>
+
+
+                            <div>
+
+                                <h2>
+                                    Input Text
+                                </h2>
+
+                                <p>
+                                    Enter plaintext or ciphertext
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <span class="tag">
+                            INPUT
+                        </span>
+
+                    </div>
+
+
+                    <textarea
+                        id="plainText"
+                        placeholder="Type or paste your text here..."
+                        spellcheck="false"
+                    ></textarea>
+
+
+                    <div class="stats">
+
+                        <span>
+                            Characters:
+                            <strong id="charCount">
+                                0
+                            </strong>
+                        </span>
+
+
+                        <span>
+                            Words:
+                            <strong id="wordCount">
+                                0
+                            </strong>
+                        </span>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- OUTPUT -->
+
+                <section class="panel">
+
+                    <div class="panel-head">
+
+                        <div class="panel-title-wrap">
+
+                            <span class="number">
+                                02
+                            </span>
+
+
+                            <div>
+
+                                <h2>
+                                    Output
+                                </h2>
+
+                                <p>
+                                    Encrypted or hashed result
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <span class="tag gold">
+                            OUTPUT
+                        </span>
+
+                    </div>
+
+
+                    <textarea
+                        id="cipherText"
+                        placeholder="Your result will appear here..."
+                        readonly
+                        spellcheck="false"
+                    ></textarea>
+
+
+                    <div class="stats">
+
+                        <span>
+                            Output Length:
+                            <strong id="outputLength">
+                                0
+                            </strong>
+                        </span>
+
+
+                        <span id="formatInfo">
+                            Format: —
+                        </span>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+
+
+            <!-- =================
+                 ALGORITHMS
+            ================== -->
+
+            <section class="section">
+
+                <div class="section-head">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            CRYPTOGRAPHIC METHOD
+                        </span>
+
+                        <h2>
+                            Select Algorithm
+                        </h2>
+
+                    </div>
+
+
+                    <span class="hint">
+                        Choose the operation you want to perform.
+                    </span>
+
+                </div>
+
+
+                <div class="algorithm-cards">
+
+
+                    <button
+                        class="algorithm-card"
+                        data-algorithm="caesar"
+                        type="button"
+                    >
+
+                        <span class="algo-icon">
+                            ↻
+                        </span>
+
+                        <b>
+                            Caesar Cipher
+                        </b>
+
+                        <small>
+                            SUBSTITUTION
+                        </small>
+
+                    </button>
+
+
+                    <button
+                        class="algorithm-card"
+                        data-algorithm="aes"
+                        type="button"
+                    >
+
+                        <span class="algo-icon">
+                            ◈
+                        </span>
+
+                        <b>
+                            AES-256
+                        </b>
+
+                        <small>
+                            SYMMETRIC
+                        </small>
+
+                    </button>
+
+
+                    <button
+                        class="algorithm-card"
+                        data-algorithm="base64"
+                        type="button"
+                    >
+
+                        <span class="algo-icon">
+                            ◉
+                        </span>
+
+                        <b>
+                            Base64
+                        </b>
+
+                        <small>
+                            ENCODING
+                        </small>
+
+                    </button>
+
+
+                    <button
+                        class="algorithm-card"
+                        data-algorithm="sha256"
+                        type="button"
+                    >
+
+                        <span class="algo-icon">
+                            #
+                        </span>
+
+                        <b>
+                            SHA-256
+                        </b>
+
+                        <small>
+                            HASHING
+                        </small>
+
+                    </button>
+
+                </div>
+
+
+                <label for="algorithm">
+                    Algorithm Selection
+                </label>
+
+
+                <select id="algorithm">
+
+                    <option value="">
+                        -- Select Algorithm --
+                    </option>
+
+                    <option value="caesar">
+                        Caesar Cipher
+                    </option>
+
+                    <option value="aes">
+                        AES-256
+                    </option>
+
+                    <option value="base64">
+                        Base64
+                    </option>
+
+                    <option value="sha256">
+                        SHA-256 Hash
+                    </option>
+
+                </select>
+
+            </section>
+
+
+
+            <!-- =================
+                 KEY
+            ================== -->
+
+            <section class="key-section">
+
+                <div class="section-head key-head">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            SECURITY CREDENTIAL
+                        </span>
+
+                        <h2 id="keyTitle">
+                            Secret Key / Shift
+                        </h2>
+
+                    </div>
+
+
+                    <span
+                        id="keyStatus"
+                        class="status-pill"
+                    >
+                        SELECT ALGORITHM
+                    </span>
+
+                </div>
+
+
+                <input
+                    id="secretKey"
+                    type="text"
+                    placeholder="Select an algorithm first"
+                    autocomplete="off"
+                >
+
+
+                <small id="keyHelp">
+                    Select an algorithm to see the required input.
+                </small>
+
+
+                <!-- AES KEY STRENGTH -->
+
+                <div
+                    id="keyStrengthContainer"
+                    class="strength hidden"
+                >
+
+                    <div class="strength-top">
+
+                        <span>
+                            Key Strength
+                        </span>
+
+                        <strong id="keyStrengthText">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="strength-bar">
+
+                        <div
+                            id="keyStrengthBar"
+                            class="strength-fill"
+                        ></div>
+
+                    </div>
+
+
+                    <div
+                        id="keyRules"
+                        class="rules"
+                    ></div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================
+                 CAESAR VISUALIZER
+            ================== -->
+
+            <section
+                id="caesarVisualizer"
+                class="visualizer hidden"
+            >
+
+                <div class="section-head">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            LIVE VISUALIZATION
+                        </span>
+
+                        <h2>
+                            Caesar Rotation
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="alphabet-row">
+
+                    <span>
+                        ORIGINAL
+                    </span>
+
+                    <code id="originalAlphabet">
+                        ABCDEFGHIJKLMNOPQRSTUVWXYZ
+                    </code>
+
+                </div>
+
+
+                <div class="arrow">
+                    ↓
+                </div>
+
+
+                <div class="alphabet-row shifted">
+
+                    <span>
+                        SHIFTED
+                    </span>
+
+                    <code id="shiftedAlphabet">
+                        DEFGHIJKLMNOPQRSTUVWXYZABC
+                    </code>
+
+                </div>
+
+
+                <div class="example">
+
+                    Example:
+
+                    <strong id="caesarExample">
+                        HELLO → KHOOR
+                    </strong>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================
+                 ACTION BUTTONS
+            ================== -->
+
+            <div class="actions">
+
+                <button
+                    id="encryptBtn"
+                    class="action primary"
+                    type="button"
+                >
+                    ⚡ Encrypt / Process
+                </button>
+
+
+                <button
+                    id="decryptBtn"
+                    class="action secondary"
+                    type="button"
+                >
+                    ↩ Decrypt
+                </button>
+
+            </div>
+
+
+            <!-- MESSAGE -->
+
+            <div
+                id="message"
+                class="message"
+                aria-live="polite"
+            ></div>
+
+
+
+            <!-- =================
+                 ANALYSIS
+            ================== -->
+
+            <section class="section analysis-section">
+
+                <div class="section-head">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            LIVE ANALYSIS
+                        </span>
+
+                        <h2>
+                            Security Information
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="analysis-grid">
+
+
+                    <div class="analysis-box">
+
+                        <span>
+                            ALGORITHM
+                        </span>
+
+                        <strong id="algorithmInfo">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="analysis-box">
+
+                        <span>
+                            OPERATION
+                        </span>
+
+                        <strong id="operationStatus">
+                            READY
+                        </strong>
+
+                    </div>
+
+
+                    <div class="analysis-box">
+
+                        <span>
+                            KEY STATUS
+                        </span>
+
+                        <strong id="analysisKeyStatus">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="analysis-box">
+
+                        <span>
+                            OUTPUT FORMAT
+                        </span>
+
+                        <strong id="analysisFormat">
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================
+                 RESULT ACTIONS
+            ================== -->
+
+            <div class="output-actions">
+
+                <button
+                    id="copyBtn"
+                    class="utility"
+                    type="button"
+                >
+                    Copy Result
+                </button>
+
+
+                <button
+                    id="downloadBtn"
+                    class="utility"
+                    type="button"
+                >
+                    Download Result
+                </button>
+
+
+                <button
+                    id="clearBtn"
+                    class="utility danger"
+                    type="button"
+                >
+                    Clear Workspace
+                </button>
+
+            </div>
+
+
+
+            <!-- =================
+                 SAVE RESULT
+            ================== -->
+
+            <section
+                id="saveSection"
+                class="save-section hidden"
+            >
+
+                <div class="section-head">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            SECURE STORAGE
+                        </span>
+
+                        <h2>
+                            Save Result
+                        </h2>
+
+                    </div>
+
+
+                    <span class="status-pill success-pill">
+                        LOGGED IN
+                    </span>
+
+                </div>
+
+
+                <div class="save-row">
+
+                    <input
+                        id="saveTitle"
+                        type="text"
+                        maxlength="80"
+                        placeholder="Give this result a title..."
+                    >
+
+
+                    <button
+                        id="saveBtn"
+                        class="utility save"
+                        type="button"
+                    >
+                        Save Result
+                    </button>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================
+                 SAVED MESSAGES
+            ================== -->
+
+            <section
+                id="savedSection"
+                class="section hidden"
+            >
+
+                <div class="section-head">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            SECURE STORAGE
+                        </span>
+
+                        <h2>
+                            Saved Messages
+                        </h2>
+
+                    </div>
+
+
+                    <button
+                        id="refreshSavedBtn"
+                        class="link-btn"
+                        type="button"
+                    >
+                        ↻ Refresh
+                    </button>
+
+                </div>
+
+
+                <div id="savedMessages">
+
+                    <div class="empty">
+                        No saved messages yet.
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================
+                 HISTORY
+            ================== -->
+
+            <section
+                class="section history-section"
+            >
+
+                <div class="section-head">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            LOCAL ACTIVITY
+                        </span>
+
+                        <h2>
+                            Recent Operations
+                        </h2>
+
+                    </div>
+
+
+                    <button
+                        id="clearHistoryBtn"
+                        class="link-btn"
+                        type="button"
+                    >
+                        Clear History
+                    </button>
+
+                </div>
+
+
+                <div id="operationHistory">
+
+                    <div class="empty">
+                        No operations performed yet.
+                    </div>
+
+                </div>
+
+            </section>
+
+        </section>
+
+
+        <!-- =====================
+             FOOTER
+        ====================== -->
+
+        <footer class="footer">
+
+            <div>
+                CRYPTOLAB • Information Security Assignment
+            </div>
+
+
+            <div class="student-credit">
+
+                <span>
+                    DEVELOPED BY
+                </span>
+
+                <strong>
+                    Muhammad Jarrar Hussain
+                </strong>
+
+                <code>
+                    03-134231-045
+                </code>
+
+            </div>
+
+
+            <div class="footer-right">
+
+                <span class="dot"></span>
+
+                Local Processing Workbench
+
+            </div>
+
+        </footer>
+
+    </main>
+
+
+
+    <!-- =========================
+         AUTH MODAL
+    ========================== -->
+
+    <div
+        id="authModal"
+        class="modal hidden"
+    >
+
+        <div class="auth-card">
+
+            <button
+                id="closeAuthBtn"
+                class="close-btn"
+                type="button"
+            >
+                ×
+            </button>
+
+
+            <span class="eyebrow">
+                SECURE ACCESS
+            </span>
+
+
+            <h2>
+                CRYPTOLAB Account
+            </h2>
+
+
+            <p>
+                Login to save and manage your encrypted results.
+            </p>
+
+
+            <div class="auth-tabs">
+
+                <button
+                    id="loginTab"
+                    class="auth-tab active"
+                    type="button"
+                >
+                    Login
+                </button>
+
+
+                <button
+                    id="registerTab"
+                    class="auth-tab"
+                    type="button"
+                >
+                    Register
+                </button>
+
+            </div>
+
+
+
+            <!-- LOGIN -->
+
+            <form
+                id="loginForm"
+                class="auth-form"
+            >
+
+                <label for="loginEmail">
+                    Email
+                </label>
+
+                <input
+                    id="loginEmail"
+                    type="email"
+                    placeholder="you@example.com"
+                    required
+                >
+
+
+                <label for="loginPassword">
+                    Password
+                </label>
+
+                <input
+                    id="loginPassword"
+                    type="password"
+                    placeholder="Enter your password"
+                    required
+                >
+
+
+                <button
+                    class="auth-submit"
+                    type="submit"
+                >
+                    Login
+                </button>
+
+            </form>
+
+
+
+            <!-- REGISTER -->
+
+            <form
+                id="registerForm"
+                class="auth-form hidden"
+            >
+
+                <label for="registerName">
+                    Full Name
+                </label>
+
+                <input
+                    id="registerName"
+                    type="text"
+                    placeholder="Your name"
+                    required
+                >
+
+
+                <label for="registerEmail">
+                    Email
+                </label>
+
+                <input
+                    id="registerEmail"
+                    type="email"
+                    placeholder="you@example.com"
+                    required
+                >
+
+
+                <label for="registerPassword">
+                    Password
+                </label>
+
+                <input
+                    id="registerPassword"
+                    type="password"
+                    minlength="6"
+                    placeholder="Minimum 6 characters"
+                    required
+                >
+
+
+                <button
+                    class="auth-submit"
+                    type="submit"
+                >
+                    Create Account
+                </button>
+
+            </form>
+
+
+            <div
+                id="authMessage"
+                class="auth-message"
+            ></div>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
